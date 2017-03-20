@@ -5,11 +5,27 @@ param (
    [switch] $DetectProcess,
    [switch] $IncludeBestPractices,
    [switch] $Flows,
+   [switch] $All,
    [string] $Interface
 )
 
 if (Test-Path C:\CyberSift) {
   return 0
+}
+
+if ($All){
+  $Dns = $true;
+  $DetectProcess = $true;
+  $IncludeBestPractices = $true;
+  $Flows = $true;  
+}
+
+if ($Flows -and $Dns){
+  $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_flows_dns.yml"
+} elseif ($Flows){
+  $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_flows_only.yml"
+} elseif ($Dns){
+  $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_dns_only.yml"
 }
 
 # Create the directory we'll live in
@@ -54,14 +70,6 @@ if ($sysmon_config -ne ""){
   wget $winlogbeat_config -OutFile C:\CyberSift\winlogbeat\winlogbeat.yml
   Add-Content C:\CyberSift\winlogbeat\winlogbeat.yml "`noutput.elasticsearch:`n  hosts: [`"http://$server`:80/elasticsearch/`"]"
   C:\CyberSift\winlogbeat\install-service-winlogbeat.ps1
-}
-
-if ($Flows -and $Dns){
-  $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_flows_dns.yml"
-} elseif ($Flows){
-  $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_flows_only.yml"
-} elseif ($Dns){
-  $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_dns_only.yml"
 }
 
 if ($packetbeat_config -ne ""){
