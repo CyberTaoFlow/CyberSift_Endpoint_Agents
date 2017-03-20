@@ -36,9 +36,9 @@ New-Item C:\CyberSift -type directory
 New-Item C:\CyberSift\Downloads -type directory
 
 # Download archives
-wget https://github.com/CyberSift/vendor_binaries/blob/master/windows/packetbeat-5.2.2-windows-x86_64.zip -OutFile C:\CyberSift\Downloads\packetbeat.zip
-wget https://github.com/CyberSift/vendor_binaries/blob/master/windows/winlogbeat-5.2.2-windows-x86_64.zip -OutFile C:\CyberSift\Downloads\winlogbeat.zip
-wget https://github.com/CyberSift/vendor_binaries/blob/master/windows/Sysmon.zip -OutFile C:\CyberSift\Downloads\Sysmon.zip
+wget https://github.com/CyberSift/vendor_binaries/raw/master/windows/packetbeat-5.2.2-windows-x86.zip -OutFile C:\CyberSift\Downloads\packetbeat.zip
+wget https://github.com/CyberSift/vendor_binaries/raw/master/windows/winlogbeat-5.2.2-windows-x86_64.zip -OutFile C:\CyberSift\Downloads\winlogbeat.zip
+wget https://github.com/CyberSift/vendor_binaries/raw/master/windows/Sysmon.zip -OutFile C:\CyberSift\Downloads\Sysmon.zip
 
 # Function To Unzip Files
 Add-Type -AssemblyName System.IO.Compression.FileSystem
