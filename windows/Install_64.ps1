@@ -74,15 +74,15 @@ if ($sysmon_config -ne ""){
   C:\CyberSift\sysmon\Sysmon64.exe -i -n -h md5 -accepteula
 
   $winlogbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/winlogbeat/only_sysmon.yml"
-  wget $winlogbeat_config -OutFile C:\CyberSift\winlogbeat\winlogbeat.yml
-  Add-Content C:\CyberSift\winlogbeat\winlogbeat.yml "`noutput.elasticsearch:`n  hosts: [`"http://$server`:80/elasticsearch/`"]"
-  C:\CyberSift\winlogbeat\install-service-winlogbeat.ps1
+  wget $winlogbeat_config -OutFile C:\CyberSift\winlogbeat\winlogbeat-5.2.2-windows-x86_64\winlogbeat.yml
+  Add-Content C:\CyberSift\winlogbeat\winlogbeat-5.2.2-windows-x86_64\winlogbeat.yml "`noutput.elasticsearch:`n  hosts: [`"http://$server`:80/elasticsearch/`"]"
+  C:\CyberSift\winlogbeat\winlogbeat-5.2.2-windows-x86_64\install-service-winlogbeat.ps1
 }
 
 if ($packetbeat_config -ne ""){
-  wget $packetbeat_config -OutFile C:\CyberSift\packetbeat\packetbeat.yml
-  Add-Content C:\CyberSift\packetbeat\packetbeat.yml "`noutput.elasticsearch:`n  hosts: [`"http://$server`:80/elasticsearch/`"]`n`npacketbeat.interfaces.device: $Interface`n"
-  C:\CyberSift\packetbeat\install-service-packetbeat.ps1
+  wget $packetbeat_config -OutFile C:\CyberSift\packetbeat\packetbeat-5.2.2-windows-x86\packetbeat.yml
+  Add-Content C:\CyberSift\packetbeat\packetbeat-5.2.2-windows-x86\packetbeat.yml "`noutput.elasticsearch:`n  hosts: [`"http://$server`:80/elasticsearch/`"]`n`npacketbeat.interfaces.device: $Interface`n"
+  C:\CyberSift\packetbeat\packetbeat-5.2.2-windows-x86\install-service-packetbeat.ps1
 }
 
 return 0
