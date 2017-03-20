@@ -20,6 +20,8 @@ if ($All){
   $Flows = $true;
 }
 
+$packetbeat_config=""
+
 if ($Flows -and $Dns){
   $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_flows_dns.yml"
 } elseif ($Flows){
@@ -58,7 +60,6 @@ Unzip "C:\CyberSift\Downloads\winlogbeat.zip" "C:\CyberSift\winlogbeat"
 Unzip "C:\CyberSift\Downloads\Sysmon.zip" "C:\CyberSift\sysmon"
 
 $sysmon_config=""
-$packetbeat_config=""
 $winlogbeat_config=""
 
 if ($DetectProcess -and $IncludeBestPractices) {
