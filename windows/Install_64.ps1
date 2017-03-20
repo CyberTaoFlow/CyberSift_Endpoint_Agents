@@ -17,7 +17,7 @@ if ($All){
   $Dns = $true;
   $DetectProcess = $true;
   $IncludeBestPractices = $true;
-  $Flows = $true;  
+  $Flows = $true;
 }
 
 if ($Flows -and $Dns){
@@ -26,6 +26,9 @@ if ($Flows -and $Dns){
   $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_flows_only.yml"
 } elseif ($Dns){
   $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_dns_only.yml"
+} else {
+  Write-Host "Not enough arguments provided. Either -Flows or -Dns or both must be specified. Exiting..."
+  return 0
 }
 
 # Create the directory we'll live in
