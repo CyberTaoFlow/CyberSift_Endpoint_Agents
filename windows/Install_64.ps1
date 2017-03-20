@@ -23,11 +23,11 @@ if ($All){
 $packetbeat_config=""
 
 if ($Flows -and $Dns){
-  $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_flows_dns.yml"
+  $packetbeat_config="https://github.com/CyberSift/vendor_configs/raw/master/packetbeat/windows_flows_dns.yml"
 } elseif ($Flows){
-  $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_flows_only.yml"
+  $packetbeat_config="https://github.com/CyberSift/vendor_configs/raw/master/packetbeat/windows_flows_only.yml"
 } elseif ($Dns){
-  $packetbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/packetbeat/windows_dns_only.yml"
+  $packetbeat_config="https://github.com/CyberSift/vendor_configs/raw/master/packetbeat/windows_dns_only.yml"
 } else {
   Write-Host "Not enough arguments provided. Either -Flows or -Dns or both must be specified. Exiting..."
   return 0
@@ -63,18 +63,18 @@ $sysmon_config=""
 $winlogbeat_config=""
 
 if ($DetectProcess -and $IncludeBestPractices) {
-  $sysmon_config="https://github.com/CyberSift/vendor_configs/blob/master/sysmon/sysmon_config.xml"
+  $sysmon_config="https://github.com/CyberSift/vendor_configs/raw/master/sysmon/sysmon_config.xml"
 } elseif ($DetectProcess) {
-  $sysmon_config="https://github.com/CyberSift/vendor_configs/blob/master/sysmon/sysmon_config_net_only.xml"
+  $sysmon_config="https://github.com/CyberSift/vendor_configs/raw/master/sysmon/sysmon_config_net_only.xml"
 } elseif ($IncludeBestPractices) {
-  $sysmon_config="https://github.com/CyberSift/vendor_configs/blob/master/sysmon/sysmon_config_limited_net.xml"
+  $sysmon_config="https://github.com/CyberSift/vendor_configs/raw/master/sysmon/sysmon_config_limited_net.xml"
 }
 
 if ($sysmon_config -ne ""){
   wget $sysmon_config -OutFile C:\CyberSift\sysmon\config.xml
   C:\CyberSift\sysmon\Sysmon64.exe -i -n -h md5 -accepteula
 
-  $winlogbeat_config="https://github.com/CyberSift/vendor_configs/blob/master/winlogbeat/only_sysmon.yml"
+  $winlogbeat_config="https://github.com/CyberSift/vendor_configs/raw/master/winlogbeat/only_sysmon.yml"
   wget $winlogbeat_config -OutFile C:\CyberSift\winlogbeat\winlogbeat-5.2.2-windows-x86_64\winlogbeat.yml
   Add-Content C:\CyberSift\winlogbeat\winlogbeat-5.2.2-windows-x86_64\winlogbeat.yml "`noutput.elasticsearch:`n  hosts: [`"http://$server`:80/elasticsearch/`"]"
   C:\CyberSift\winlogbeat\winlogbeat-5.2.2-windows-x86_64\install-service-winlogbeat.ps1
