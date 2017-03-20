@@ -46,8 +46,12 @@ function Unzip
 {
     param([string]$zipfile, [string]$outpath)
 
-    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
+    [IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
 }
+
+New-Item C:\CyberSift\sysmon -type directory
+New-Item C:\CyberSift\winlogbeat -type directory
+New-Item C:\CyberSift\packetbeat -type directory
 
 Unzip "C:\CyberSift\Downloads\packetbeat.zip" "C:\CyberSift\packetbeat"
 Unzip "C:\CyberSift\Downloads\winlogbeat.zip" "C:\CyberSift\winlogbeat"
