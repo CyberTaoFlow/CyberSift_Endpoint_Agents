@@ -1,3 +1,7 @@
-# CyberSift_Endpoint_Agents
+# CyberSift Endpoint Agents
 
-Install Scripts to collect information from endpoints (windows / linux)
+Install Scripts to collect information from endpoints:
+  - [Windows](#)
+  - [Linux](#)
+  - [Snort](#)
+  - [Ossec](#)
