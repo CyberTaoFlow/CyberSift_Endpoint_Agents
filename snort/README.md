@@ -16,16 +16,16 @@ output unified2: filename merged.log, limit 128, nostamp, mpls_event_types, vlan
   
 - Create a dirctory for us to work in:
 
-`
-mkdir /cybersift
-cd /cybersift
-`
+  `
+  mkdir /cybersift
+  cd /cybersift
+  `
 
 - Download the program that export snort alerts to cybersift from our repo:
 
-`
-curl https://raw.githubusercontent.com/CyberSift/CyberSift_Endpoint_Agents/master/snort/SnortToEs.py -o /cybersift/SnortToEs.py
-`
+  `
+  curl https://raw.githubusercontent.com/CyberSift/CyberSift_Endpoint_Agents/master/snort/SnortToEs.py -o /cybersift/SnortToEs.py
+  `
 
 - Make a note of the following:
   - The snort rule classification file (by default this is */etc/snort/classification.config*)
@@ -45,9 +45,7 @@ curl https://raw.githubusercontent.com/CyberSift/CyberSift_Endpoint_Agents/maste
   
 - Add the command to cron to be run every minute:
 
-`
-echo '''
-* * * * * root python /cybersift/SnortToEs.py -C /etc/snort/classification.config -G /etc/snort/gen-msg.map -S /etc/snort/sid-msg.map --directory=/var/log/snort --prefix=merged.log --bookmark=/tmp/book.tmp --cs "192.168.168.170"
-''' >> /etc/crontab
-`
+  `
+  echo '* * * * * root python /cybersift/SnortToEs.py -C /etc/snort/classification.config -G /etc/snort/gen-msg.map -S /etc/snort/sid-msg.map --directory=/var/log/snort --prefix=merged.log --bookmark=/tmp/book.tmp --cs "192.168.1.1"' >> /etc/crontab
+  `
 
