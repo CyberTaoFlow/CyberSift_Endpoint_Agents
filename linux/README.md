@@ -18,10 +18,11 @@ LinuxAgent depends on the following two open source programs:
   
    - Download the [LinuxAgent binary from here](https://github.com/CyberSift/CyberSift_Endpoint_Agents/raw/master/linux/LinuxAgent). Place the binary into a known location (we recommend "/usr/local/cybersift") and make a note of that location for later use
    
-   ``` wget https://github.com/CyberSift/CyberSift_Endpoint_Agents/raw/master/linux/LinuxAgent -O /usr/local/cybersift/LinuxAgent
+   ``` 
+   wget https://github.com/CyberSift/CyberSift_Endpoint_Agents/raw/master/linux/LinuxAgent -O /usr/local/cybersift/LinuxAgent
    ```
    
-   - Download the [LinuxAgent script from here](https://raw.githubusercontent.com/CyberSift/CyberSift_Endpoint_Agents/master/linux/LinuxAgent.sh). 
+   - Download the [LinuxAgent script from here](https://raw.githubusercontent.com/CyberSift/CyberSift_Endpoint_Agents/master/linux/LinuxAgent.sh). 
    
    ```
    wget https://raw.githubusercontent.com/CyberSift/CyberSift_Endpoint_Agents/master/linux/LinuxAgent.sh -O /usr/local/cybersift/LinuxAgent.sh
