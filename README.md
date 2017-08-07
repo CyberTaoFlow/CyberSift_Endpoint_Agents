@@ -5,3 +5,4 @@ Install Scripts to collect information from endpoints:
   - [Linux](#)
   - [Snort](https://github.com/CyberSift/CyberSift_Endpoint_Agents/tree/master/snort)
   - [Ossec](#)
+  - [Docker HIDS](https://github.com/CyberSift/CyberSift_Endpoint_Agents/tree/master/Docker_Linux)
