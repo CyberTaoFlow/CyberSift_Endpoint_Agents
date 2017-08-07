@@ -1,0 +1,5 @@
+{
+    "IPAddress": "127.0.0.1",
+    "Contain": ["dvwa","ubuntu"],
+    "DoNotContain": ["doesnotexist"]
+}
