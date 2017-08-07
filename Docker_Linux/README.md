@@ -15,13 +15,15 @@ This folder contains the **64-bit** executable for monitoring the Docker Host (c
         
 ## Running
 - Once configured, simply execute the DockerAgent file. This will output the raw system calls, for example:
-`
+
+
+```
 citizenstig/dvwa:mmap:apache2:12565
 
 citizenstig/dvwa:mmap:apache2:12565
 
 citizenstig/dvwa:mprotect:apache2:12565
-`
+```
 
 Generally there is no need to log these though in some environments this may be needed for forensic reasons. 
 
